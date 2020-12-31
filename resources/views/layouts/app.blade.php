@@ -38,8 +38,11 @@
                     </ul>
                     @else
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a href="{{ route('categories.index') }}">Categorias</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{ route('products.index') }}">Produtos</a>
                         </li>
                     </ul>
                     @endguest
