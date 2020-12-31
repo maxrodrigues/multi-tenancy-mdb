@@ -17,7 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('categories', 'App\CategoryController');
+Route::group(['namespace' => 'App'], function(){
+
+    Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
+
+});
+
 
 Auth::routes();
 
