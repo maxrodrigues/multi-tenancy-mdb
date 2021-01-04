@@ -4,11 +4,11 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 my-2">
-            <a href="{{ route('categories.index') }}" class="btn btn-primary">Voltar</a>
+            <a href="{{ route('app.categories.index') }}" class="btn btn-primary">Voltar</a>
         </div>
         <div class="col-md-12">
             <div class="card">
-                <form action="{{ route('categories.update', ['category' => $category->id]) }}" method="post">
+                <form action="{{ route('app.categories.update', ['category' => $category->id]) }}" method="post">
                     @csrf
                     @method('put')
                     <div class="card-body">

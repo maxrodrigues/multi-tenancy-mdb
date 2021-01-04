@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 mx-2">
-            <a href="{{ route('categories.create') }}" class="btn btn-primary">Criar Categoria</a>
+            <a href="{{ route('app.categories.create') }}" class="btn btn-primary">Criar Categoria</a>
         </div>
         <div class="col-md-12 m-2">
             <div class="card">
@@ -23,8 +23,8 @@
                                     <th scope="row">{{ $category->id }}</th>
                                     <td>{{ $category->name }}</td>
                                     <td>
-                                        <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="btn btn-dark">Visualizar</a>
-                                        <a href="{{ route('categories.edit', ['category' => $category->id]) }}" class="btn btn-warning">Editar</a>
+                                        <a href="{{ route('app.categories.show', ['category' => $category->id]) }}" class="btn btn-dark">Visualizar</a>
+                                        <a href="{{ route('app.categories.edit', ['category' => $category->id]) }}" class="btn btn-warning">Editar</a>
                                     </td>
                                 </tr>
                             @empty

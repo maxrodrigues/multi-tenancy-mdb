@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,14 +18,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'App'], function(){
+Route::group(['prefix' => 'app', 'as' => 'app.',  'namespace' => 'App'], function(){
+    Auth::routes(['register' => false]);
 
-    Route::resource('categories', 'CategoryController');
-    Route::resource('products', 'ProductController');
-
+    Route::group(['middleware' => 'auth'], function(){
+        Route::get('dashboard', function(){
+            return view('app.dashboard');
+        });
+        Route::resource('categories', 'CategoryController');
+        Route::resource('products', 'ProductController');
+    });
 });
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

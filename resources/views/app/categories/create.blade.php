@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <form action="{{ route('categories.store') }}" method="post">
+                <form action="{{ route('app.categories.store') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="card-body">

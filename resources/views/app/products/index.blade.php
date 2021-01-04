@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 mx-2">
-            <a href="{{ route('products.create') }}" class="btn btn-primary">Criar Produto</a>
+            <a href="{{ route('app.products.create') }}" class="btn btn-primary">Criar Produto</a>
         </div>
         <div class="col-md-12 m-2">
             <div class="card">
@@ -23,8 +23,8 @@
                                     <th scope="row">{{ $product->id }}</th>
                                     <td>{{ $product->name }}</td>
                                     <td>
-                                        <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-dark">Visualizar</a>
-                                        <a href="{{ route('products.edit', ['product' => $product->id]) }}" class="btn btn-warning">Editar</a>
+                                        <a href="{{ route('app.products.show', ['product' => $product->id]) }}" class="btn btn-dark">Visualizar</a>
+                                        <a href="{{ route('app.products.edit', ['product' => $product->id]) }}" class="btn btn-warning">Editar</a>
                                     </td>
                                 </tr>
                             @empty

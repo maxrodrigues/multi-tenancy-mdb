@@ -4,11 +4,11 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 my-2">
-            <a href="{{ route('products.index') }}" class="btn btn-primary">Voltar</a>
+            <a href="{{ route('app.products.index') }}" class="btn btn-primary">Voltar</a>
         </div>
         <div class="col-md-12">
             <div class="card">
-                <form action="{{ route('products.store') }}" method="post">
+                <form action="{{ route('app.products.store') }}" method="post">
                     @csrf
                     @method('post')
                     <div class="card-body">

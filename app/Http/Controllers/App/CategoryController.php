@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
         //
         Category::create($request->all());
-        return redirect()->route('categories.index');
+        return redirect()->route('app.categories.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryController extends Controller
     {
         $category->fill($request->all());
         $category->save();
-        return redirect()->route('categories.index');
+        return redirect()->route('app.categories.index');
     }
 
     /**
@@ -90,6 +90,6 @@ class CategoryController extends Controller
     {
         //
         $category->delete();
-        return redirect()->route('categories.index');
+        return redirect()->route('app.categories.index');
     }
 }

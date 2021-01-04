@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 my-2">
-            <a href="{{ route('categories.index') }}" class="btn btn-primary">Voltar</a>
+            <a href="{{ route('app.categories.index') }}" class="btn btn-primary">Voltar</a>
         </div>
         <div class="col-md-12">
             <div class="card">
