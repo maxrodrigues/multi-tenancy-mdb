@@ -13,8 +13,11 @@ trait TenantModels
         static::addGlobalScope(new TenantScope());
 
         static::creating(function (Model $model) {
-            $companyId = Auth::user()->company_id;
-            $model->company_id = $companyId;
+            $company = \Tenant::getTenant();
+            #$companyId = Auth::user()->company_id;
+            if ($company) {
+                $model->company_id = $company->id;
+            }
         });
     }
 }

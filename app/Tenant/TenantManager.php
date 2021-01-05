@@ -12,7 +12,7 @@ class TenantManager
     /**
      * @return Company
      */
-    public function getTentant(): ?Company
+    public function getTenant(): ?Company
     {
         //NULL or Company
         return $this->tenant;
@@ -25,5 +25,13 @@ class TenantManager
     public function setTenant($tenant): void
     {
         $this->tenant = $tenant;
+    }
+
+    /**
+     * @return void
+     */
+    public function disableTenant(): void
+    {
+        $this->tenant = null;
     }
 }
