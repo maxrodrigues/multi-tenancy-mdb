@@ -14,20 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get("/", function () {
+    return view("welcome");
 });
 
-Route::group(['prefix' => 'app', 'as' => 'app.',  'namespace' => 'App'], function(){
-    Auth::routes(['register' => false]);
+Route::group(
+    ["prefix" => "app", "as" => "app.", "namespace" => "App"],
+    function () {
+        Auth::routes(["register" => false]);
 
-    Route::group(['middleware' => 'auth'], function(){
-        Route::get('dashboard', function(){
-            return view('app.dashboard');
+        Route::group(["middleware" => ["auth", "tenant"]], function () {
+            Route::get("dashboard", function () {
+                return view("app.dashboard");
+            });
+            Route::resource("categories", "CategoryController");
+            Route::resource("products", "ProductController");
         });
-        Route::resource('categories', 'CategoryController');
-        Route::resource('products', 'ProductController');
-    });
-});
+    }
+);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get("/home", "HomeController@index")->name("home");
