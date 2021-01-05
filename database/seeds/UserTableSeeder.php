@@ -19,11 +19,13 @@ class UserTableSeeder extends Seeder
         #]);
         factory(User::class, 1)->create([
             #'name' => 'Adminitrador',
-            'email' => 'user1@user.com'
+            'email' => 'user1@user.com',
+            'company_id' => 1
         ]);
         factory(User::class, 1)->create([
             #'name' => 'Adminitrador',
-            'email' => 'user2@user.com'
+            'email' => 'user2@user.com',
+            'company_id' => 2
         ]);
     }
 }

@@ -8,4 +8,8 @@ class Category extends Model
 {
     //
     protected $fillable = ['name'];
+
+    public function company(){
+        return $this->belongsTo(Company::class);
+    }
 }
