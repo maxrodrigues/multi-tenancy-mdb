@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Tenant\TenantModels;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    //
-    protected $fillable = ['name'];
+    use TenantModels;
+    protected $fillable = ["name"];
 
-    public function company(){
+    public function company()
+    {
         return $this->belongsTo(Company::class);
     }
 }
