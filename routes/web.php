@@ -23,13 +23,16 @@ Route::group(
     function () {
         Auth::routes(["register" => false]);
 
-        Route::group(["middleware" => ["auth", "tenant"]], function () {
-            Route::get("dashboard", function () {
-                return view("app.dashboard");
-            });
-            Route::resource("categories", "CategoryController");
-            Route::resource("products", "ProductController");
-        });
+        Route::group(
+            ["middleware" => ["auth", "tenant", "bindings"]],
+            function () {
+                Route::get("dashboard", function () {
+                    return view("app.dashboard");
+                });
+                Route::resource("categories", "CategoryController");
+                Route::resource("products", "ProductController");
+            }
+        );
     }
 );
 
