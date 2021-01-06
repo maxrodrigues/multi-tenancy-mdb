@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
@@ -13,9 +12,9 @@ return [
     |
     */
 
-    'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+    "defaults" => [
+        "guard" => "web",
+        "passwords" => "users",
     ],
 
     /*
@@ -35,16 +34,21 @@ return [
     |
     */
 
-    'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
+    "guards" => [
+        "app_web" => [
+            "driver" => "session",
+            "provider" => "users",
         ],
 
-        'api' => [
-            'driver' => 'token',
-            'provider' => 'users',
-            'hash' => false,
+        "admin_web" => [
+            "driver" => "session",
+            "provider" => "admins",
+        ],
+
+        "api" => [
+            "driver" => "token",
+            "provider" => "users",
+            "hash" => false,
         ],
     ],
 
@@ -65,10 +69,15 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\User::class,
+    "providers" => [
+        "users" => [
+            "driver" => "eloquent",
+            "model" => App\User::class,
+        ],
+
+        "admins" => [
+            "driver" => "eloquent",
+            "model" => App\Admin::class,
         ],
 
         // 'users' => [
@@ -92,12 +101,12 @@ return [
     |
     */
 
-    'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
+    "passwords" => [
+        "users" => [
+            "provider" => "users",
+            "table" => "password_resets",
+            "expire" => 60,
+            "throttle" => 60,
         ],
     ],
 
@@ -112,6 +121,5 @@ return [
     |
     */
 
-    'password_timeout' => 10800,
-
+    "password_timeout" => 10800,
 ];
