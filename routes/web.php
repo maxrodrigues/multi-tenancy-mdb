@@ -19,21 +19,43 @@ Route::get("/", function () {
 });
 
 Route::group(
-    ["prefix" => "app", "as" => "app.", "namespace" => "App"],
+    ["prefix" => "app", "as" => "app."],
     function () {
+        
         Auth::routes(["register" => false]);
-
-        Route::group(
-            ["middleware" => ["auth", "tenant", "bindings"]],
-            function () {
-                Route::get("dashboard", function () {
-                    return view("app.dashboard");
-                });
-                Route::resource("categories", "CategoryController");
-                Route::resource("products", "ProductController");
-            }
-        );
+        Route::group([ "namespace" => "App"], function(){
+            Route::group(
+                ["middleware" => ["auth", "tenant", "bindings"]], function () {
+                    Route::get("dashboard", function () {
+                        return view("app.dashboard");
+                    });
+                    Route::resource("categories", "CategoryController");
+                    Route::resource("products", "ProductController");
+                }
+            );
+        });
     }
 );
+
+Route::group(
+    ["prefix" => "admin", "as" => "admin."],
+    function () {
+        
+        Auth::routes(["register" => false]);
+        Route::group([ "namespace" => "Admin"], function(){
+            Route::group(
+                ["middleware" => ["auth", "bindings"]], function () {
+                    Route::get("dashboard", function () {
+                        return view("app.dashboard");
+                    });
+                    // Route::resource("categories", "CategoryController");
+                    // Route::resource("products", "ProductController");
+                }
+            );
+        });
+    }
+);
+
+
 
 Route::get("/home", "HomeController@index")->name("home");
