@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Section\SectionFacade;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
@@ -58,6 +59,6 @@ class Handler extends ExceptionHandler
     {
         return $request->expectsJson()
         ? response()->json(['message' => $exception->getMessage(), 401])
-        : response()->guest($exception->redirectTo() ?? route('app.login'));
+        : redirect()->guest($exception->redirectTo() ?? route(SectionFacade::get('login.route_login')));
     }
 }

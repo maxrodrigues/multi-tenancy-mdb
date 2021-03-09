@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Section\SectionFacade;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Routing\Events\RouteMatched;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -31,8 +33,8 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
+        $this->setSection();
     }
 
     /**
@@ -76,5 +78,15 @@ class RouteServiceProvider extends ServiceProvider
             ->middleware('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/api.php'));
+    }
+
+    protected function setSection(){
+        if(\Request::is('admin/*')){
+            SectionFacade::setSection('admin');
+        }
+
+        if(\Request::is('app/*')){
+            SectionFacade::setSection('app');
+        }
     }
 }

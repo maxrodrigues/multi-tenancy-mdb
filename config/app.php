@@ -221,6 +221,7 @@ return [
         "Str" => Illuminate\Support\Str::class,
 
         "Tenant" => \App\Tenant\TenantFacade::class,
+        "Section" => \App\Section\SectionFacade::class,
 
         "URL" => Illuminate\Support\Facades\URL::class,
         "Validator" => Illuminate\Support\Facades\Validator::class,

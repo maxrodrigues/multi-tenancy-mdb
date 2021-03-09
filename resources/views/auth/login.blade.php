@@ -1,4 +1,9 @@
-@extends('layouts.app')
+@php
+    $layout = \Section::get('layout');
+    $routeLogin = \Section::get('login.route_login');
+    $routePasswordRequest = \Section::get('password.route_request');
+@endphp
+@extends($layout)
 
 @section('content')
 <div class="container">
@@ -8,7 +13,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('app.login') }}">
+                    <form method="POST" action="{{ route($routeLogin) }}">
                         @csrf
 
                         <div class="form-group row">
@@ -57,8 +62,8 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                @if (Route::has($routePasswordRequest))
+                                    <a class="btn btn-link" href="{{ route($routePasswordRequest) }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
