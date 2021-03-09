@@ -13,7 +13,7 @@ return [
     */
 
     "defaults" => [
-        "guard" => "web",
+        "guard" => "app_web",
         "passwords" => "users",
     ],
 

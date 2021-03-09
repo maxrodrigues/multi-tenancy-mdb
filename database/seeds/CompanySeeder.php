@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Admin;
 use App\Models\Company;
+use App\Models\UserTenant;
 use Illuminate\Database\Seeder;
 
 class CompanySeeder extends Seeder
@@ -12,6 +14,10 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
+        factory(Company::class, 1)->create([
+            'name' => 'Empresa Admin'
+        ]);
+
         factory(Company::class, 1)->create([
             'name' => 'Empresa 1'
         ]);
